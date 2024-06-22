@@ -9,10 +9,7 @@ const AddJobs = ({addNewJob, edit=false}) => {
   const [formData, setFormData] = useState({});
   const [isloading, setIsLoading] = useState(true);
 
-  // if(edit){
-  //   const editJob = useLoaderData();
-  //   setFormData(editJob);
-  // }
+  
   const handleOnChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
