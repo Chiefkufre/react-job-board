@@ -3,7 +3,7 @@ import { useParams, Link, useLoaderData, useNavigate } from 'react-router-dom'
 import {FaMapMarker, FaArrowLeft } from 'react-icons/fa'
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
-
+import jobs from "../jobs.json"
 
 const JobPage = ({deleteJob}) => {
   const  {id} = useParams() 
@@ -107,10 +107,25 @@ const JobPage = ({deleteJob}) => {
   )
 }
 
-export const loader = async({params}) => {
+// use this loader for an actual backend
+export const loader2 = async({params}) => {
   const res = await fetch(`/api/jobs/${params.id}`);
   const data = await res.json();
   return data
+}
+
+// use this loader for a dummy data
+export const loader = ({ params }) => {
+  let actualJob = {};
+  for (const job of jobs) {
+    const jobId = job.id.trim();
+    const paramId = params.id.trim();
+    if (jobId === paramId) {
+      actualJob = job;
+      return job;
+    }
+  }
+  return actualJob;
 }
 
 export  default memo(JobPage);

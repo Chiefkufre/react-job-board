@@ -1,5 +1,4 @@
-{
-  "jobs": [
+[
     {
       "id": "1",
       "title": "Senior React Developer",
@@ -91,4 +90,3 @@
       "contact_phone": "07062332449"
     }
   ]
-}
